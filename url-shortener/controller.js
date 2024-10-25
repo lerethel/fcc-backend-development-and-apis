@@ -1,13 +1,28 @@
+const dns = require("dns/promises");
 const { ShortenedURL, Counter } = require("./models");
 
-const isValidURL = (url) => !!URL.parse(url);
+const isValidURL = async (url) => {
+  const parsedURL = URL.parse(url);
+
+  if (!parsedURL) {
+    return false;
+  }
+
+  try {
+    await dns.lookup(parsedURL.hostname);
+  } catch {
+    return false;
+  }
+
+  return true;
+};
 
 exports.getHome = (req, res) => res.sendFile(__dirname + "/views/index.html");
 
 exports.createURL = async (req, res) => {
   const { url } = req.body;
 
-  if (!isValidURL(url)) {
+  if (!(await isValidURL(url))) {
     return res.json({ error: "Invalid URL" });
   }
 
