@@ -1,0 +1,32 @@
+body {
+  background-color: #fafafa;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.4em;
+  color: #222;
+  text-align: center;
+}
+
+.container {
+  margin-top: 40px;
+  padding: 0;
+}
+
+h3 {
+  margin-top: 30px;
+}
+
+.footer {
+  margin-top: 40px;
+}
+
+code {
+  padding: 2px;
+  background-color: #fff;
+  font-family: monospace;
+  color: black;
+}
+
+a {
+  color: #2574a9;
+}
